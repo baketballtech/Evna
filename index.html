@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Evna</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            height: 100vh;
+            width: 100vw;
+            background: rgb(47, 0, 53);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            transition: background 1s ease-in-out;
+        }
+        #btn {
+            background-color: blueviolet;
+            color: white;
+            padding: 20px;
+            border-radius: 30px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 1.5em;
+            border: none;
+            box-shadow: 0 0 100px rgb(228, 129, 229);
+            cursor: pointer;
+        }
+        #message {
+            font-size: 2em;
+            font-family: 'Georgia', serif;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            display: none; /* Oculto inicialmente */
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">Clique em mim</button>
+    <div id="message"></div>
+
+    <script>
+        const button = document.getElementById('btn');
+        const message = document.getElementById('message');
+        const body = document.body;
+
+        button.addEventListener('click', () => {
+            // Remove o botão
+            button.style.display = 'none';
+
+            // Altera o fundo
+            body.style.background = "url('evna.png') no-repeat center center/cover";
+
+            // Exibe a mensagem letra por letra
+            const text = "Happy Birthday Evna 💖🎈";
+            let index = 0;
+
+            function showMessage() {
+                if (index < text.length) {
+                    message.textContent += text[index];
+                    index++;
+                    setTimeout(showMessage, 150); // Tempo entre letras
+                }
+            }
+
+            // Exibe a mensagem e inicia o texto animado
+            message.style.display = 'block';
+            showMessage();
+        });
+    </script>
+</body>
+</html>
